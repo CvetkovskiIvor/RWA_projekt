@@ -55,8 +55,13 @@
                 <a onclick="leaderboardClose()"><img class="x-icon" src="imgs/x_icon.png" alt="x"></a>
             </div>
             <h1 class="leaderboard-h1">Leaderboard</h1>
-
+            <br>
             <div class="leaderboard-text">
+                <table>
+                <tr>
+                    <th>Nickname</th>
+                    <th>Highscore</th>
+                </tr>
                 <?php 
                     // Create connection
                     $conn = new mysqli($servername, $username, $password, $dbName);
@@ -64,19 +69,21 @@
                     if ($conn->connect_error) {
                       die("Connection failed: " . $conn->connect_error);
                     }
-                    $sql = "SELECT nickname, max(score) as highscore FROM players GROUP BY nickname";
+                    $sql = "SELECT nickname, max(score) as highscore FROM players GROUP BY nickname ORDER BY highscore desc";
                     $result = $conn->query($sql);
                     
                     if ($result->num_rows > 0) {
                       // output data of each row
                       while($row = $result->fetch_assoc()) {
-                        echo "nickname: " . $row["nickname"]. " | ". "highscore: ". $row["highscore"]."<br>";
+                        echo "<tr><td>" . $row["nickname"]. "</td>". "<td>". $row["highscore"]."</td>";
                       }
                     } else {
                       echo "0 results";
                     }
                     $conn->close();
                 ?>
+
+                </table>
             </div>
         </div>
     </div>

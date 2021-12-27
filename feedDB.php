@@ -16,7 +16,7 @@
 		
    	$score = $conn->real_escape_string($_COOKIE['score']);
     $nickname = $_SESSION["nickname"];
-   	$sql = "UPDATE players SET score = $score where nickname = '$nickname' AND id = (select * from (select max(id) from players) as t)";
+   	$sql = "UPDATE players SET score = $score where nickname = '$nickname' AND $score > score AND id = (select * from (select max(id) from players) as t)";
 
 	if ($conn->query($sql) === TRUE) {
 	} else {

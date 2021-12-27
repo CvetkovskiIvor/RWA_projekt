@@ -93,16 +93,18 @@ footer {
     display:table;
     background-color: white;
     width: 30vw;
-    height: 60vh;
+    max-height: 60vh;
+    height: auto;
     position: relative;
     text-align: center;
+    border-radius: 10px;
 }
 
 .leaderboard-text{
     position: relative;
-    border: 2px solid black;
-    margin: 5px;
-    padding: 3px;
+    /*border: 2px solid black;*/
+    /*margin: 5px;*/
+    /*padding: 3px;*/
     height: inherit;
 }
 
@@ -119,4 +121,45 @@ footer {
     margin-right: 5px;
     margin-top: 5px;
     cursor: pointer;
+}
+
+table {
+    /*border: 1px solid black;*/
+    border-collapse: collapse;
+}
+table {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 13px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.50);
+}
+
+th {
+    background-color: #62b49a;
+    font-size: large;
+}
+tr {
+    font-size: large;
+}
+
+tr:nth-child(even) {
+    background-color: lightgray;
+}
+
+table th:first-child {
+    border-top-left-radius: 10px;
+}
+
+table th:last-child {
+    border-top-right-radius: 10px;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
 }

@@ -12,6 +12,7 @@ let snake = [
 ]
 
 let score = 0;
+let lastScore = score;
 
 createCookie("score", score);
 
@@ -93,7 +94,11 @@ function has_game_ended() {
             game_over = "Game over! Your score: " + score;
             document.getElementById('score').innerHTML = game_over;
 
-            createCookie("score", score);
+            if(score > lastScore){
+                maxScore = score;
+            }
+
+            createCookie("score", lastScore);
 
             return true;
         }
@@ -107,7 +112,11 @@ function has_game_ended() {
         game_over = "Game over! Your score: " + score;
         document.getElementById('score').innerHTML = game_over;
         
-        createCookie("score", score);
+        if(score > lastScore){
+            maxScore = score;
+        }
+
+        createCookie("score", lastScore);
 
         return true;
     }

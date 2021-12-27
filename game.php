@@ -17,7 +17,7 @@
 
   <div class="button-container">
   <form class="save-score-form" action="feedDB.php" method="POST"> 
-    <input class="button" id="save-score-button" type="submit" value="Save score">
+    <input class="button" id="play-again-button" type="submit" value="Play again">
   </form>
   <form class="home-form" action="home.php" method="POST">
     <input class="button" id="home-button" type="submit" value="Home">  

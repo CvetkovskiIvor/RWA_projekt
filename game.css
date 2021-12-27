@@ -31,7 +31,7 @@ body {
 .button:hover {
   background-color: gray;
 }
-.save-score-form{
+.play-again-form{
   display: inline-block;
   margin: 0;
   width:108px;
