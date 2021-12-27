@@ -17,18 +17,13 @@ let lastScore = score;
 createCookie("score", score);
 
 let game_over = "";
-// True if changing direction
 let changing_direction = false;
-// Horizontal velocity
 let food_x;
 let food_y;
 let dx = 20;
-// Vertical velocity
 let dy = 0;
 
-// Get the canvas element
 const gameCanvas = document.getElementById("gameCanvas");
-// Return a two dimensional drawing context
 const gameCanvas_ctx = gameCanvas.getContext("2d");
 
 gen_food();
@@ -44,26 +39,18 @@ function main() {
         drawFood();
         move_snake();
         drawSnake();
-        // Repeat
         main();
     }, 100)
 }
 
-// draw a border around the canvas
 function clear_board() {
-    //  Select the colour to fill the drawing
     gameCanvas_ctx.fillStyle = board_background;
-    //  Select the colour for the border of the canvas
     gameCanvas_ctx.strokestyle = board_border;
-    // Draw a "filled" rectangle to cover the entire canvas
     gameCanvas_ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
-    // Draw a "border" around the entire canvas
     gameCanvas_ctx.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
 }
 
-// Draw the snake on the canvas
 function drawSnake() {
-    // Draw each part
     snake.forEach(drawSnakePart)
 }
 
@@ -74,17 +61,10 @@ function drawFood() {
     gameCanvas_ctx.strokeRect(food_x, food_y, 20, 20);
 }
 
-// Draw one snake part
 function drawSnakePart(snakePart) {
-
-    // Set the colour of the snake part
     gameCanvas_ctx.fillStyle = snake_col;
-    // Set the border colour of the snake part
     gameCanvas_ctx.strokestyle = snake_border;
-    // Draw a "filled" rectangle to represent the snake part at the coordinates
-    // the part is located
     gameCanvas_ctx.fillRect(snakePart.x, snakePart.y, 20, 20);
-    // Draw a border around the snake part
     gameCanvas_ctx.strokeRect(snakePart.x, snakePart.y, 20, 20);
 }
 
@@ -127,11 +107,8 @@ function random_food(min, max) {
 }
 
 function gen_food() {
-    // Generate a random number the food x-coordinate
     food_x = random_food(0, gameCanvas.width - 20);
-    // Generate a random number for the food y-coordinate
     food_y = random_food(0, gameCanvas.height - 20);
-    // if the new food location is where the snake currently is, generate a new food location
     snake.forEach(function has_snake_eaten_food(part) {
         const has_eaten = part.x == food_x && part.y == food_y;
         if (has_eaten) gen_food();
@@ -143,8 +120,6 @@ function changeDirection(event) {
     const RIGHT_KEY = 39;
     const UP_KEY = 38;
     const DOWN_KEY = 40;
-
-    // Prevent the snake from reversing
 
     if (changing_direction) return;
     changing_direction = true;
