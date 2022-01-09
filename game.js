@@ -75,9 +75,9 @@ function has_game_ended() {
             document.getElementById('score').innerHTML = game_over;
 
             if(score > lastScore){
-                maxScore = score;
+                lastScore = score;
             }
-
+            console.log(lastScore);
             createCookie("score", lastScore);
 
             return true;
@@ -93,9 +93,9 @@ function has_game_ended() {
         document.getElementById('score').innerHTML = game_over;
         
         if(score > lastScore){
-            maxScore = score;
+            lastScore = score;
         }
-
+        console.log(lastScore);
         createCookie("score", lastScore);
 
         return true;

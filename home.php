@@ -5,7 +5,7 @@
 
     $servername = "localhost";
     $username = "root";
-    $password = "password";
+    $password = "";
     $dbName = "snakeDB";
     
     $conn = new mysqli($servername, $username, $password, $dbName);
